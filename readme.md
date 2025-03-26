@@ -1,6 +1,6 @@
-# ga-demo
+# pyga
 
-This repository demonstrates a basic implementation of a Genetic Algorithm (GA).
+This repository provides a basic implementation of a Genetic Algorithm (GA).
 
  <a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 

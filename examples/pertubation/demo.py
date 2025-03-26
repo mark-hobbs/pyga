@@ -2,8 +2,8 @@ import numpy as np
 
 from point import Point
 from polygon import Polygon
-from population import Population
-from ga import GeneticAlgorithm
+from pyga import Population
+from pyga import GeneticAlgorithm
 
 
 def main():

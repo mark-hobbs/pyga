@@ -2,7 +2,7 @@ import random
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-from animation import Animation
+from .animation import Animation
 
 
 class GeneticAlgorithm:
