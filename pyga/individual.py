@@ -4,7 +4,7 @@ import numpy as np
 class Individual:
 
     _crossover_method = None
-    _mutation_method = None
+    _mutate_method = None
 
     def __init__(self, genes):
         self.genes = genes
