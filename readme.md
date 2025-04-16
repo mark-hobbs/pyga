@@ -20,6 +20,10 @@ The following animations demonstrate the evolution of the polygon shapes over ma
 
 ![Evolution Animation](figures/animation-2.gif)
 
+**Example 2**
+
+![Evolution Animation](figures/animation-3.gif)
+
 ## Usage
 
 ### 1. Clone the repository and activate the virtual environment
