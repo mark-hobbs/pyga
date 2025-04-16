@@ -20,7 +20,7 @@ The following animations demonstrate the evolution of the polygon shapes over ma
 
 ![Evolution Animation](figures/animation-2.gif)
 
-**Example 2**
+**Example 3**
 
 ![Evolution Animation](figures/animation-3.gif)
 
