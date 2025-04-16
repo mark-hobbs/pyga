@@ -1,57 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from pyga import Individual
-
-def pmx_crossover(self, partner):
-    """
-    Partially mapped crossover (PMX)
-
-    Returns
-    -------
-    child
-    """
-    size = len(self.genes)
-    child = [-1] * size
-    a, b = sorted(np.random.choice(range(size), size=2, replace=False))
-
-    # Copy segment from self to child
-    for i in range(a, b):
-        child[i] = self.genes[i]
-
-    # Create mapping for the other parent
-    mapping = {value: index for index, value in enumerate(child) if value != -1}
-
-    # Fill in the rest from other
-    for i in range(size):
-        if i < a or i >= b:
-            value = partner.genes[i]
-            while value in mapping:
-                value = partner.genes[mapping[value]]
-            child[i] = value
-            mapping[value] = i
-    return self.__class__(child)
-
-def swap_mutation(self, mutation_probability):
-    """
-    Mutation: Swap mutation
-
-    Returns
-    -------
-    Modifies individual.genes in place
-    """
-    if np.random.rand() < mutation_probability:
-        idx1, idx2 = np.random.randint(0, len(self.genes), 2)
-        self.genes[idx1], self.genes[idx2] = (
-            self.genes[idx2],
-            self.genes[idx1],
-        )
+from pyga import Individual, pmx, swap
 
 
 class Polygon(Individual):
 
-    _crossover_method = staticmethod(pmx_crossover)
-    _mutate_method = staticmethod(swap_mutation)
+    _crossover_method = staticmethod(pmx)
+    _mutate_method = staticmethod(swap)
 
     def __init__(self, points):
         """

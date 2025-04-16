@@ -27,7 +27,7 @@ class Individual:
 
     def crossover(self, partner):
         """
-        Crossover: combine the genetic material of two parent individuals 
+        Crossover: combine the genetic material of two parent individuals
         to create offspring
 
         Returns
@@ -40,8 +40,8 @@ class Individual:
 
     def mutate(self, mutation_probability):
         """
-        Mutation: introduce small variations in the genetic material, 
-        preventing premature convergence and maintaining diversity 
+        Mutation: introduce small variations in the genetic material,
+        preventing premature convergence and maintaining diversity
         in the population.
         """
         if self._mutate_method is None:
