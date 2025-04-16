@@ -1,9 +1,9 @@
 import numpy as np
 
+import pyga
+
 from point import Point
 from polygon import Polygon
-from pyga import Population
-from pyga import GeneticAlgorithm
 
 
 def main():
@@ -14,9 +14,9 @@ def main():
     individuals = [
         Polygon(np.random.permutation(points)) for _ in range(population_size)
     ]
-    population = Population(individuals)
+    population = pyga.Population(individuals)
 
-    ga = GeneticAlgorithm(
+    ga = pyga.GeneticAlgorithm(
         population,
         num_generations=100,
         num_parents=4,
