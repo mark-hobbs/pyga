@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from individual import Individual
+from pyga import Individual
 
 class Polygon(Individual):
     def __init__(self, points):
