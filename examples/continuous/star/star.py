@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,7 +9,7 @@ class Star(Individual):
     _crossover_method = staticmethod(blended)
     _mutate_method = staticmethod(gaussian)
 
-    target_shape = None 
+    target_shape = None
 
     def __init__(self, genes):
         super().__init__(genes)
@@ -22,18 +21,23 @@ class Star(Individual):
         cls.target_shape = points
 
     def evaluate_fitness(self):
+        """
+        Lower distance -> higher fitness
+        """
         if Star.target_shape is None:
             raise ValueError("Target shape not set")
-        individual_points = np.array(self.genes).reshape(-1, 2)
-        target_points = np.array(Star.target_shape).reshape(-1, 2)
-        distances = np.linalg.norm(individual_points - target_points, axis=1)
-        mean_distance = np.mean(distances)
-        self._fitness = 1 / (1 + mean_distance)  # Lower distance → higher fitness
+        distances = np.linalg.norm(
+            np.array(self.genes).reshape(-1, 2)
+            - np.array(Star.target_shape).reshape(-1, 2),
+            axis=1,
+        )
+        self._fitness = 1 / (1 + np.mean(distances))
 
     def plot(self, ax):
         points = np.array(self.genes).reshape(-1, 2)
         x = np.append(points[:, 0], points[0, 0])
         y = np.append(points[:, 1], points[0, 1])
-        ax.plot(x, y, 'b-o')
-        ax.set_aspect('equal')
-        ax.axis('off')
+        ax.plot(x, y, "k-")
+        ax.fill(x, y, "c", alpha=0.3)
+        ax.set_aspect("equal")
+        ax.axis("off")
