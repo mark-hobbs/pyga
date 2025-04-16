@@ -2,6 +2,10 @@ import numpy as np
 
 
 class Individual:
+
+    _crossover_method = None
+    _mutation_method = None
+
     def __init__(self, genes):
         self.genes = genes
         self._fitness = None
@@ -23,41 +27,23 @@ class Individual:
 
     def crossover(self, partner):
         """
-        Partially mapped crossover (PMX)
+        Crossover: combine the genetic material of two parent individuals 
+        to create offspring
 
         Returns
         -------
         child
         """
-        size = len(self.genes)
-        child = [-1] * size
-        a, b = sorted(np.random.choice(range(size), size=2, replace=False))
-
-        # Copy segment from self to child
-        for i in range(a, b):
-            child[i] = self.genes[i]
-
-        # Create mapping for the other parent
-        mapping = {value: index for index, value in enumerate(child) if value != -1}
-
-        # Fill in the rest from other
-        for i in range(size):
-            if i < a or i >= b:
-                value = partner.genes[i]
-                while value in mapping:
-                    value = partner.genes[mapping[value]]
-                child[i] = value
-                mapping[value] = i
-
-        return child
+        if self._crossover_method is None:
+            raise NotImplementedError("Crossover method not defined.")
+        return self._crossover_method(self, partner)
 
     def mutate(self, mutation_probability):
         """
-        Mutation: Swap mutation
+        Mutation: introduce small variations in the genetic material, 
+        preventing premature convergence and maintaining diversity 
+        in the population.
         """
-        if np.random.rand() < mutation_probability:
-            idx1, idx2 = np.random.randint(0, len(self.genes), 2)
-            self.genes[idx1], self.genes[idx2] = (
-                self.genes[idx2],
-                self.genes[idx1],
-            )
+        if self._mutate_method is None:
+            raise NotImplementedError("Mutation method not defined.")
+        return self._mutate_method(self, mutation_probability)
