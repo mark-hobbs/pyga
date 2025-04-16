@@ -7,7 +7,7 @@ def pmx(individual, partner):
 
     Returns
     -------
-    child
+    child : Individual
     """
     size = len(individual.genes)
     child = [-1] * size
@@ -28,4 +28,29 @@ def pmx(individual, partner):
                 value = partner.genes[mapping[value]]
             child[i] = value
             mapping[value] = i
+    return individual.__class__(child)
+
+
+def blended(individual, partner, alpha=0.5):
+    """
+    Blend Crossover (BLX-alpha)
+
+    Parameters
+    ----------
+    partner : Individual
+        The other parent individual.
+    alpha : float
+        The blending parameter that controls the range of crossover.
+
+    Returns
+    -------
+    child : Individual
+        The offspring produced by crossover.
+    """
+    child = np.zeros_like(individual.genes)
+    for i in range(len(individual.genes)):
+        X_min = min(individual.genes[i], partner.genes[i])
+        X_max = max(individual.genes[i], partner.genes[i])
+        delta = X_max - X_min
+        child[i] = np.random.uniform(X_min - alpha * delta, X_max + alpha * delta)
     return individual.__class__(child)

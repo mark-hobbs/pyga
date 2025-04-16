@@ -1,21 +1,25 @@
 
-from pyga import Individual
+from pyga import Individual, blended, gaussian
 
 
 class Design(Individual):
 
-    def __init__(self, genes, posterior):
+    _crossover_method = staticmethod(blended)
+    _mutate_method = staticmethod(gaussian)
+
+    posterior = None
+
+    def __init__(self, genes):
         super().__init__(genes)
-        self.posterior = posterior
+
+    @classmethod
+    def set_posterior(cls, posterior):
+        if cls.posterior is not None:
+            raise AttributeError("Posterior already set")
+        cls.posterior = posterior
 
     def evaluate_fitness(self):
         self._fitness = self.posterior.evaluate(self.genes)
-
-    def crossover(self, partner):
-        return Design(super().crossover(partner), self.posterior)
-        
-    def mutate(self, mutation_probability):
-        super().mutate(mutation_probability)
 
     def plot(self, ax):
         """
