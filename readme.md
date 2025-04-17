@@ -1,26 +1,20 @@
 # pyga
 
-This repository provides a basic implementation of a Genetic Algorithm (GA).
+A general-purpose genetic algorithm implemented in Python
 
- <a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+## Visualise
 
-## Problem statement
+Address both permutation and continuous type problems with ease and visualise the evolutionary process to gain intuition.
 
-Given a set of points in 2D space, determine the polygon that maximises the ratio of its area to the square of its perimeter $(\text{Area}/\text{Perimeter}^2)$. This ratio serves as a measure of compactness, which is often desirable in various fields such as materials science, biology, and urban planning. Compact shapes can lead to more efficient designs, reduced material usage, and optimised spatial arrangements.
+### Permutation type problem
 
-## Example solutions
-
-The following animations demonstrate the evolution of the polygon shapes over many generations.
-
-**Example 1**
+**Problem statement:** Given a set of points in 2D space, determine the polygon that maximises the ratio of its area to the square of its perimeter $(\text{Area}/\text{Perimeter}^2)$. This ratio serves as a measure of compactness, which is often desirable in various fields such as materials science, biology, and urban planning. Compact shapes can lead to more efficient designs, reduced material usage, and optimised spatial arrangements.
 
 ![Evolution Animation](figures/animation-1.gif)
 
-**Example 2**
+### Continuous type problem
 
-![Evolution Animation](figures/animation-2.gif)
-
-**Example 3**
+**Problem statement:** Given an initial set of points in 2D space, evolve their positions such that the resulting configuration closely matches a predefined target shape (e.g. a star). The fitness function quantitatively evaluates the similarity between a candidate shape and the target, guiding the evolution toward the optimal arrangement.
 
 ![Evolution Animation](figures/animation-3.gif)
 
@@ -31,8 +25,8 @@ The following animations demonstrate the evolution of the polygon shapes over ma
 Clone the repository and install the necessary dependencies using `pipenv`.
 
 ```bash
-git clone https://github.com/mark-hobbs/ga-demo.git
-cd ga-demo
+git clone https://github.com/mark-hobbs/pyga.git
+cd pyga
 pipenv install
 pipenv shell
 ```
