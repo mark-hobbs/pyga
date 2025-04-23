@@ -94,6 +94,10 @@ Or you can run the notebook using Google Colab:
 
 <a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
+## TODO
+
+- [ ] Parallelise the fitness assessment of population members using cloud-based infrastructure
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
